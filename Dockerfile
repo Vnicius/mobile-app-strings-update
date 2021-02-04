@@ -4,8 +4,9 @@ FROM alpine:latest
 # installes required packages for our script
 RUN apk add --no-cache \
     bash \
-    git \
-    http://dl-cdn.alpinelinux.org/alpine/edge/testing hub
+    git
+
+RUN apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing hub
 
 # Copies your code file  repository to the filesystem
 COPY entrypoint.sh /entrypoint.sh
