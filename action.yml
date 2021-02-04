@@ -1,0 +1,37 @@
+name: Mobile App Strings Update
+description: Update the strings of a Mobile App project
+inputs:
+  app_path:
+    description: path with the app files
+    required: true
+  app_branch:
+    description: brach of the mobile app
+    required: true
+  app_strings_path:
+    description: path with the original strings directories
+    required: true
+  strings_path:
+    description: path with the new strings directories
+    required: true
+  strings_file_name:
+    description: file_name with new strings directories
+    required: true 
+
+outputs:
+  result:
+    description: The state of the action, if the file could be downloaded successfully
+
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.app_repo }}
+    - ${{ inputs.app_branch }}
+    - ${{ inputs.app_strings_path }}
+    - ${{ inputs.strings_path }}
+    - ${{ inputs.strings_file_name }}
+    - ${{ inputs.github_token }}
+
+branding:
+  icon: "align-left"
+  color: "purple"
