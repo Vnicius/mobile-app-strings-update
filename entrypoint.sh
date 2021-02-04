@@ -43,6 +43,8 @@ find "$INPUT_STRINGS_PATH" -type f -name "$INPUT_STRINGS_FILE_NAME" | while read
     mkdir -p $dest && cp $src_file $dest_file
 done
 
+ls
+
 cd "${INPUT_APP_PATH}"
 
 git config user.name 'Locale Sync'
@@ -52,14 +54,14 @@ git add .
 
 # Check if has changes to commit
 if [[ `git status --porcelain` ]]; then
-git commit -m "Update translations strings"
-git push origin test_action_branch
-hub pull-request \
-    --base ${INPUT_APP_BRANCH} \
-    --head test_action_branch \
-    -m "Translation Update Test"\
-    -m "- Add update of translations" \
-    -m ":robot: _Translations updated by automated action at Test_"
+    git commit -m "Update translations strings"
+    git push origin test_action_branch
+    hub pull-request \
+        --base ${INPUT_APP_BRANCH} \
+        --head test_action_branch \
+        -m "Translation Update Test"\
+        -m "- Add update of translations" \
+        -m ":robot: _Translations updated by automated action at Test_"
 else
-echo "No changes"
+    echo "No changes"
 fi;
