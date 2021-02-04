@@ -10,8 +10,7 @@ find "$INPUT_STRINGS_PATH" -type f -name "$INPUT_STRINGS_FILE_NAME" | while read
     src_file=${dirname}/$filename
 
     # Do special merge to default strings
-    if [ $foldername == "values" ]
-    then
+    if [ $foldername == "values" ]; then
         out_file=merged.xml
         not_translatable_regex="translatable=\"false\""
         string_tag_regex="(<[^<]*resources[^>]*>)|(<[^<]*xml[^>]*>)"
@@ -38,14 +37,14 @@ find "$INPUT_STRINGS_PATH" -type f -name "$INPUT_STRINGS_FILE_NAME" | while read
         echo "</resources>" >> $out_file
 
         src_file=$out_file
-    fi
+    fi;
 
     mkdir -p $dest && cp $src_file $dest_file
 done
 
 cd "${INPUT_APP_PATH}"
 
-git config user.name 'String update'
+git config user.name 'Strings update'
 git config user.email 'action@github.com'
 git checkout -b ${INPUT_PR_BRANCH}
 git add .
@@ -57,7 +56,7 @@ if [[ `git status --porcelain` ]]; then
     hub pull-request \
         --base ${INPUT_APP_BRANCH} \
         --head ${INPUT_PR_BRANCH} \
-        -m "${INPUT_PR_TITLE}"\
+        -m "${INPUT_PR_TITLE}" \
         -m "${INPUT_PR_BODY}" 
 else
     echo "No changes"

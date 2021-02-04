@@ -40,9 +40,14 @@ runs:
   using: docker
   image: Dockerfile
   args:
+    - ${{ inputs.app_path }}
     - ${{ inputs.app_repo }}
     - ${{ inputs.app_branch }}
     - ${{ inputs.app_strings_path }}
+    - ${{ inputs.pr_branch }}
+    - ${{ inputs.pr_title }}
+    - ${{ inputs.pr_body }}
+    - ${{ inputs.pr_commit }}
     - ${{ inputs.strings_path }}
     - ${{ inputs.strings_file_name }}
     - ${{ inputs.github_token }}
