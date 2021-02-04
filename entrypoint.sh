@@ -43,8 +43,6 @@ find "$INPUT_STRINGS_PATH" -type f -name "$INPUT_STRINGS_FILE_NAME" | while read
     mkdir -p $dest && cp $src_file $dest_file
 done
 
-ls
-
 cd "${INPUT_APP_PATH}"
 
 git config user.name 'Locale Sync'

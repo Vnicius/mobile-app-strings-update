@@ -4,7 +4,8 @@ FROM alpine:latest
 # installes required packages for our script
 RUN apk add --no-cache \
     bash \
-    git
+    git \
+    hub
 
 # Copies your code file  repository to the filesystem
 COPY entrypoint.sh /entrypoint.sh
