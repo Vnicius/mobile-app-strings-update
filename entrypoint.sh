@@ -45,14 +45,14 @@ done
 
 cd "${INPUT_APP_PATH}"
 
-git config user.name 'Locale Sync'
+git config user.name 'String update'
 git config user.email 'action@github.com'
 git checkout -b ${INPUT_PR_BRANCH}
 git add .
 
 # Check if has changes to commit
 if [[ `git status --porcelain` ]]; then
-    git commit -m ${INPUT_PR_COMMIT}
+    git commit -m "Test commit"
     git push origin ${INPUT_PR_BRANCH}
     hub pull-request \
         --base ${INPUT_APP_BRANCH} \
