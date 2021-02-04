@@ -52,13 +52,13 @@ git add .
 
 # Check if has changes to commit
 if [[ `git status --porcelain` ]]; then
-    git commit -m "Test commit"
+    git commit -m "${INPUT_PR_COMMIT}"
     git push origin ${INPUT_PR_BRANCH}
     hub pull-request \
         --base ${INPUT_APP_BRANCH} \
         --head ${INPUT_PR_BRANCH} \
-        -m ${INPUT_PR_TITLE}\
-        -m ${INPUT_PR_BODY} \
+        -m "${INPUT_PR_TITLE}"\
+        -m "${INPUT_PR_BODY}" \
 else
     echo "No changes"
 fi;
