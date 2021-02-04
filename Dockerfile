@@ -6,17 +6,18 @@ RUN apk add --no-cache \
     bash \
     git
 
-FROM golang:1.9.2 as builder
-RUN set -xe && \
-    go get -u -d github.com/github/hub && \
-    cd /go/src/github.com/github/hub && \
-    git remote add jsternberg git://github.com/jsternberg/hub && \
-    git pull jsternberg master && \
-    go install github.com/github/hub
+RUN apt-get update && \
+    apt-get install -y -q --allow-unauthenticated \
+    git \
+    sudo
+RUN useradd -m -s /bin/zsh linuxbrew && \
+    usermod -aG sudo linuxbrew &&  \
+    mkdir -p /home/linuxbrew/.linuxbrew && \
+    chown -R linuxbrew: /home/linuxbrew/.linuxbrew
+USER linuxbrew
+RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
-FROM buildpack-deps:stretch-scm
-COPY --from=builder /go/bin/hub /usr/bin/hub
-COPY hub.sh /etc/profile.d/hub.sh    
+RUN brew install hub
 
 # Copies your code file  repository to the filesystem
 COPY entrypoint.sh /entrypoint.sh
