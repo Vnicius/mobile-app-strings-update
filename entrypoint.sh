@@ -39,8 +39,6 @@ find "$INPUT_STRINGS_PATH" -type f -name "$INPUT_STRINGS_FILE_NAME" | while read
         src_file=$out_file
     fi;
 
-    echo "${src_file}  to   ${dest_file}"
-
     mkdir -p $dest && cp $src_file $dest_file
 done
 
