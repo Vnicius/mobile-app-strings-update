@@ -4,8 +4,7 @@ FROM alpine:latest
 # installes required packages for our script
 RUN apk add --no-cache \
     bash \
-    git \
-    hub
+    git
 
 FROM golang:1.9.2 as builder
 RUN set -xe && \
