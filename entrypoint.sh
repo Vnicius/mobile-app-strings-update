@@ -47,19 +47,18 @@ cd "${INPUT_APP_PATH}"
 
 git config user.name 'Locale Sync'
 git config user.email 'action@github.com'
-git checkout -b test_action_branch
+git checkout -b ${INPUT_PR_BRANCH}
 git add .
 
 # Check if has changes to commit
 if [[ `git status --porcelain` ]]; then
-    git commit -m "Update translations strings"
-    git push origin test_action_branch
+    git commit -m ${INPUT_PR_COMMIT}
+    git push origin ${INPUT_PR_BRANCH}
     hub pull-request \
         --base ${INPUT_APP_BRANCH} \
-        --head test_action_branch \
-        -m "Translation Update Test"\
-        -m "- Add update of translations" \
-        -m ":robot: _Translations updated by automated action at Test_"
+        --head ${INPUT_PR_BRANCH} \
+        -m ${INPUT_PR_TITLE}\
+        -m ${INPUT_PR_BODY} \
 else
     echo "No changes"
 fi;

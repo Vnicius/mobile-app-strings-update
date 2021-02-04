@@ -10,6 +10,21 @@ inputs:
   app_strings_path:
     description: path with the original strings directories
     required: true
+  pr_branch:
+    description: brach to create the pull request
+    required: true
+  pr_title:
+    description: pull request title
+    required: false
+    default: ""
+  pr_body:
+    description: pull request body
+    required: false
+    default: ""
+  pr_commit:
+    description: pull request commit with changes
+    required: false
+    default: ""
   strings_path:
     description: path with the new strings directories
     required: true
