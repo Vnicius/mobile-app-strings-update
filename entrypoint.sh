@@ -51,7 +51,7 @@ git checkout -b ${INPUT_PR_BRANCH}
 git add .
 
 # Check if has changes to commit
-if [[ `git status --porcelain` ]] then
+if [[ `git status --porcelain` ]]; then
     git commit -m "${INPUT_PR_COMMIT}"
     git push origin ${INPUT_PR_BRANCH}
     hub pull-request \
@@ -61,4 +61,4 @@ if [[ `git status --porcelain` ]] then
         -m "${INPUT_PR_BODY}" 
 else
     echo "No changes"
-fi
+fi;
