@@ -32,10 +32,6 @@ inputs:
     description: file_name with new strings directories
     required: true 
 
-outputs:
-  result:
-    description: The state of the action, if the file could be downloaded successfully
-
 runs:
   using: docker
   image: Dockerfile
