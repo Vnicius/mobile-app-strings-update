@@ -42,7 +42,7 @@ Name of the strings files.
 
 # Usage
 
-```yalm
+```yml
     - name: Get resources repo
         uses: actions/checkout@v2
         with:
