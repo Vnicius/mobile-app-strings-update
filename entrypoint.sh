@@ -6,6 +6,7 @@ find "$INPUT_STRINGS_PATH" -type f -name "$INPUT_STRINGS_FILE_NAME" | while read
     filename=`basename "$fname"`
     newname=`echo "$dirname" | sed -e "s/ /_/g"`
     dest="${INPUT_APP_STRINGS_PATH}/${foldername}"
+    dest=$(echo $dest | sed "s/values-id/values-in/g")
     dest_file=${dest}/$filename
     src_file=${dirname}/$filename
 
@@ -14,7 +15,6 @@ find "$INPUT_STRINGS_PATH" -type f -name "$INPUT_STRINGS_FILE_NAME" | while read
         out_file=merged.xml
         not_translatable_regex="translatable=\"false\""
         string_tag_regex="(<[^<]*resources[^>]*>)|(<[^<]*xml[^>]*>)"
-        dest_file=$(echo $dest_file | sed "s/values-id/values-in/g")
 
         echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" > $out_file
         echo "<resources xmlns:android=\"http://schemas.android.com/apk/res/android\">" >> $out_file
