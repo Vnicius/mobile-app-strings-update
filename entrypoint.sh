@@ -47,6 +47,7 @@ echo "changin"
 echo "${INPUT_APP_PATH}"
 cd "${INPUT_APP_PATH}"
 
+git config --global --add safe.directory "${INPUT_APP_PATH}"
 git config user.name 'Strings update'
 git config user.email 'action@github.com'
 git checkout -b ${INPUT_PR_BRANCH}
