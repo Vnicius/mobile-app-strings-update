@@ -50,9 +50,13 @@ cd "${INPUT_APP_PATH}"
 git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
 git config user.name 'Strings update'
+echo "name"
 git config user.email 'action@github.com'
+echo "email"
 git checkout -b ${INPUT_PR_BRANCH}
+echo "checkou"
 git add .
+echo "add"
 
 # Check if has changes to commit
 if [[ `git status --porcelain` ]]; then
