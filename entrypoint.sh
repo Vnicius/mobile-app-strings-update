@@ -44,20 +44,13 @@ find "$INPUT_STRINGS_PATH" -type f -name "$INPUT_STRINGS_FILE_NAME" | while read
 done
 
 git config --global --add safe.directory '*'
-echo "changin"
-echo "${INPUT_APP_PATH}"
+
 cd "${INPUT_APP_PATH}"
 
-
-ls
 git config user.name 'Strings update'
-echo "name"
 git config user.email 'action@github.com'
-echo "email"
 git checkout -b ${INPUT_PR_BRANCH}
-echo "checkou"
 git add .
-echo "add"
 
 # Check if has changes to commit
 if [[ `git status --porcelain` ]]; then
