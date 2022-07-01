@@ -48,7 +48,7 @@ echo "${INPUT_APP_PATH}"
 cd "${INPUT_APP_PATH}"
 
 git config --global --add safe.directory "$GITHUB_WORKSPACE"
-
+echo ls
 git config user.name 'Strings update'
 echo "name"
 git config user.email 'action@github.com'
