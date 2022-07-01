@@ -43,11 +43,12 @@ find "$INPUT_STRINGS_PATH" -type f -name "$INPUT_STRINGS_FILE_NAME" | while read
     mkdir -p $dest && cp $src_file $dest_file
 done
 
+git config --global --add safe.directory "$GITHUB_WORKSPACE"
 echo "changin"
 echo "${INPUT_APP_PATH}"
 cd "${INPUT_APP_PATH}"
 
-git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
 ls
 git config user.name 'Strings update'
 echo "name"
