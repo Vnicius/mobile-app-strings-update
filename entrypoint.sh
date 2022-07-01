@@ -40,7 +40,7 @@ find "$INPUT_STRINGS_PATH" -type f -name "$INPUT_STRINGS_FILE_NAME" | while read
         src_file=$out_file
     fi;
 
-    mkdir -p $dest && cp $src_file $dest_file && sudo chmod -R ug+w $dest_file
+    mkdir -p $dest && cp $src_file $dest_file
 done
 
 cd "${INPUT_APP_PATH}"
