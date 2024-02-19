@@ -6,7 +6,7 @@ find "$INPUT_STRINGS_PATH" -type f -name "$INPUT_STRINGS_FILE_NAME" | while read
     filename=`basename "$fname"`
     newname=`echo "$dirname" | sed -e "s/ /_/g"`
     dest="${INPUT_APP_STRINGS_PATH}/${foldername}"
-    dest=$(echo $dest | sed "s/values-id/values-in/g")
+    dest=$(echo $dest | sed "s/values-id/values-in/g" | sed "s/values-no/values-nb/g")
     dest_file=${dest}/$filename
     src_file=${dirname}/$filename
 
